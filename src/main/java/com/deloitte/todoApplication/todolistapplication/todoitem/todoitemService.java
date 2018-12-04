@@ -14,7 +14,7 @@ public class todoitemService {
 
 
     public List<todoitem> getAllitem(String userName) {
-//        System.out.println(userName+"----------------");
+        System.out.println(userName+"----------------");
 //        List<todoitem> item = new ArrayList<todoitem>();
 //        repo.findAll().forEach(s -> item.add((todoitem) s));
 
@@ -30,6 +30,10 @@ public class todoitemService {
         itm.setToDoListUser(userName);
         itm = repo.save(itm);
 
+    }
+    
+    public void test() {
+    	System.out.println("\n \n \n this is from the heart \n \n \n \n");
     }
 
 }

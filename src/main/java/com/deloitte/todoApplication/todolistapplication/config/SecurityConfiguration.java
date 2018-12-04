@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
-@EnableJpaRepositories(basePackageClasses = {UserRepository.class, todoitemRepository.class})
+//@EnableJpaRepositories(basePackageClasses = {UserRepository.class, todoitemRepository.class})
 @Order(99)
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -39,13 +39,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("**/todo/**")
+//                .antMatchers("**/todo/**")
 //                .anyRequest()
-                .fullyAuthenticated()
-//                .anyRequest()
-//                .permitAll()
+//                .fullyAuthenticated()
+                .anyRequest()
+                .permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/console/**").permitAll()
                 .and()
                 .formLogin().permitAll();
+        
+        http.headers().frameOptions().disable();
     }
 
     private PasswordEncoder getPasswordEncoder() {
