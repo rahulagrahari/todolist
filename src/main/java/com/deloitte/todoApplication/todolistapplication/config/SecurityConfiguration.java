@@ -42,10 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("**/todo/**")
 //                .anyRequest()
 //                .fullyAuthenticated()
-                .anyRequest()
-                .permitAll()
+                .antMatchers("/h2-console/**").permitAll()	
                 .and()
-                .authorizeRequests().antMatchers("/console/**").permitAll()
+                .authorizeRequests()
+                .anyRequest()
+                .fullyAuthenticated()
                 .and()
                 .formLogin().permitAll();
         
